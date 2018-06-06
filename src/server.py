@@ -17,10 +17,14 @@ for name,bundle in loader.load_bundles().items():
 def index():
   return render_template('index.html')
 
-@app.route('/demande')
-def demande():
-  return render_template('demande.html')
-
 @app.route('/photos')
 def photos():
   return render_template('photos.html')
+
+@app.route('/service')
+def service():
+  return render_template('service.html')
+
+@app.route('/contact')
+def contact():
+  return render_template('contact.html')

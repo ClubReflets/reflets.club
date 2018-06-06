@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>REFLETS</title>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   <!-- CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" rel="stylesheet">
   {% assets "css" %}
@@ -11,11 +14,45 @@
   {% endassets %}
 </head>
 <body>
-{% block content %}
-{% endblock %}
-<!-- JS -->
-{% assets "js" %}
-<script src="{{ ASSET_URL }}"></script>
-{% endassets %}
+  <section class="hero is-danger has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          REFLETS
+        </h1>
+        <h2 class="subtitle">
+          Club photo de l'ÉTS
+        </h2>
+      </div>
+    </div>
+  </section>
+  <div class="tabs is-centered">
+    <ul>
+      <li {% if active_page == 'index' %} class="is-active" {% endif %}>
+        <a href="/">
+          <span class="icon">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+        </a>
+      </li>
+      <li {% if active_page == 'photos' %} class="is-active" {% endif %}>
+        <a href="/photos">Photos</a>
+      </li>
+      <li {% if active_page == 'service' %} class="is-active" {% endif %}>
+        <a href="/service">Service</a>
+      </li>
+      <li {% if active_page == 'contact' %} class="is-active" {% endif %}>
+          <a href="/contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <!-- JS -->
+  {% assets "js" %}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets %}
 </body>
 </html>
