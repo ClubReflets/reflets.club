@@ -1,2 +1,4 @@
 # reflets.club
-Source code of Reflets website
+Simple app built with Flask to manage Reflets website
+
+> keep it simple.
