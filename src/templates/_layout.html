@@ -46,10 +46,15 @@
       </li>
     </ul>
   </div>
-  <div class="container">
+  <main>
     {% block content %}
     {% endblock %}
-  </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+        This is my footer!
+    </div>
+  </footer>
   <!-- JS -->
   {% assets "js" %}
   <script src="{{ ASSET_URL }}"></script>

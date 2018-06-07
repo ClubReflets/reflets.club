@@ -2,5 +2,49 @@
 {% set active_page = "index" %}
 
 {% block content %}
-<h1>index</h1>
+<div class="container">
+  <section class="section">
+      <h1 class="title">Qui somme nous?</h1>
+      <h2 class="subtitle">
+        Sausage meatball leberkas biltong pig pork belly venison hamburger shankle beef ribs chuck swine bresaola rump flank.
+        Frankfurter rump hamburger meatball chuck, turkey kevin buffalo tenderloin bacon prosciutto pork loin drumstick jerky.
+        Bresaola t-bone shank picanha, boudin tri-tip ribeye chicken biltong doner cupim beef ham turducken. Beef beef ribs shoulder, pastrami meatball flank short ribs ham cow tongue.
+        Shoulder t-bone doner pork loin pancetta, buffalo swine capicola boudin fatback pork chop ham turducken turkey. Buffalo cupim capicola rump t-bone.
+      </h2>
+  </section>
+  <section class="section columns has-text-centered">
+    {% for i in range(3) %}
+    <div class="column">
+      <h3 class="is-size-3">Hello</h3>
+      <img src="http://via.placeholder.com/160x160" class="is-circular" alt="" srcset="">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe ipsam expedita facere illo vitae et magni corporis recusandae perspiciatis.</p>
+      <a href="#" class="button is-outlined has-space-top">Détails</a>
+    </div>
+    {% endfor %}
+  </section>
+</div>
+<section class="hero is-info has-text-centered">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns">
+          <div class="column has-text-right-tablet">
+            <a class="button is-info is-inverted is-outlined is-large is-rounded" href="#">
+                <span class="icon">
+                  <i class="fab fa-facebook-f"></i>
+                </span>
+                <span>facebook</span>
+            </a>
+          </div>
+          <div class="column has-text-left-tablet">
+            <a class="button is-danger is-inverted is-outlined is-large is-rounded" href="#">
+                <span class="icon">
+                  <i class="fab fa-instagram"></i>
+                </span>
+                <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 {% endblock %}

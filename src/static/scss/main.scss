@@ -1,3 +1,18 @@
 body {
   font-family: 'Roboto', inherit;
 }
+
+.footer {
+  background-color: #373b4e;
+  color: #fff;
+}
+
+// Helper classes
+
+.is-circular {
+ border-radius: 50%;
+}
+
+.has-space-top {
+  margin-top: 10px;
+}
