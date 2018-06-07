@@ -1,10 +1,16 @@
+import os
 import assets
 
 from flask import Flask, render_template
 from flask_assets import Environment
 from webassets.loaders import PythonLoader as PythonAssetsLoader
+from forms import ContactForm
 
+# Run and configure Flask server
 app = Flask(__name__)
+env = os.environ.get('FLASK_ENV', 'development')
+print(env)
+app.config.from_object('config.%sConfig' % env.capitalize())
 
 # Assets
 assets_env = Environment(app)
@@ -27,4 +33,5 @@ def service():
 
 @app.route('/contact')
 def contact():
-  return render_template('contact.html')
+  form = ContactForm()
+  return render_template('contact.html', form=form)

@@ -1,5 +1,6 @@
 Flask
 Flask-Assets
+Flask-WTF
 jsmin
 cssmin
 pyscss
