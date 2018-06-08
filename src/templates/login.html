@@ -1,7 +1,40 @@
-{% extends "layouts/_base.html" %}
+{% extends "layouts/_base.html" %} {% block body %}
+<main class="auth">
+  <main class="hero is-dark is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <a href="/">
+          <img src="{{ url_for('static', filename='images/logo/reflets_white_text.png') }}" class="logo" alt="Reflets Logo">
+        </a>
+        <form action="/login" method="POST" class="column is-4 is-offset-4">
+          <h2 class="subtitle">Connexion</h2>
+          <hr>
+          <div class="field">
+            <div class="control has-icons-left">
+              {{ form.email(class="input is-medium", placeholder="Email")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+          <div class="field">
+            <div class="control has-icons-left">
+              {{ form.password(class="input is-medium", placeholder="Mot de passe")}}
+              <span class="icon is-small is-left">
+                <i class="fas fa-lock"></i>
+              </span>
+              <div class="has-text-right">
+                  <a href="#"><small>Mot de passe oublié?</small></a>
+              </div>
 
-{% block body %}
-<main>
-  <h1 class="title">Login</h1>
-</main>
-{% endblock %}
+            </div>
+          </div>
+          <div class="has-text-left">
+            <div class="field">
+              <button type="submit" class="button is-warning is-medium">Se connecter</button>
+            </div>
+          </div>
+        </form>
+      </div>
+  </main>
+  {% endblock %}

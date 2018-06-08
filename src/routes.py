@@ -5,7 +5,6 @@ from forms import ContactForm, AskPhotographForm, LoginForm
 # ----------------------------------
 # Home page (without authentication)
 # ----------------------------------
-
 @app.route('/')
 def index():
   return render_template('index.html')
