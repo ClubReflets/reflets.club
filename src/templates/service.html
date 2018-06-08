@@ -1,10 +1,105 @@
-{% extends "_layout.html" %}
-{% set active_page = "service" %}
-
-{% block content %}
+{% extends "_layout.html" %} {% set active_page = "service" %} {% block content %}
 <div class="container">
   <section class="section">
     <h1 class="title">Service</h1>
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          <span>Formulaire de demande de photographe</span>
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="media">
+          <p>Décrivez brièvement votre événement dans ce formulaire.</p>
+        </div>
+        <form action="/service" method="POST">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">De</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  {{ form.name(size=20, class="input", placeholder="Nom") }}
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  {{ form.email(class="input", placeholder="Email") }}
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Quand</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <p class="control is-expanded has-icons-left">
+                  {{ form.date(size=20, class="input", placeholder="Date") }}
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-calendar"></i>
+                  </span>
+                </p>
+              </div>
+              <div class="field">
+                <p class="control is-expanded has-icons-left has-icons-right">
+                  {{ form.time(class="input", placeholder="Heure") }}
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-clock"></i>
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Description</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  {{ form.description(class="textarea", placeholder="Décrivez en quelques mots l'événement, la durée, le nombre de photographes
+                  souhaités, etc.") }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Lien</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  {{ form.link(class="input", placeholder="Lien événement Facebook, site web, etc.")}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <!-- Left empty for spacing -->
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <button type="submit" class="button is-outlined is-link">
+                    Envoyer votre demande
+                  </button>
+                </div>
+              </div>
+            </div>
+        </form>
+        </div>
+      </div>
   </section>
-</div>
-{% endblock %}
+  </div>
+  {% endblock %}

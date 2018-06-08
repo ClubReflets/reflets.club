@@ -1,10 +1,10 @@
 import os
 import assets
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 from flask_assets import Environment
 from webassets.loaders import PythonLoader as PythonAssetsLoader
-from forms import ContactForm
+from forms import ContactForm, AskPhotographForm
 
 # Run and configure Flask server
 app = Flask(__name__)
@@ -27,11 +27,18 @@ def index():
 def photos():
   return render_template('photos.html')
 
-@app.route('/service')
+@app.route('/service', methods=['GET', 'POST'])
 def service():
-  return render_template('service.html')
+  if request.method == 'GET':
+    form = AskPhotographForm()
+    return render_template('service.html', form=form)
+  # POST
+  return jsonify(request.form)
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-  form = ContactForm()
-  return render_template('contact.html', form=form)
+  if request.method == 'GET':
+    form = ContactForm()
+    return render_template('contact.html', form=form)
+  # POST
+  return jsonify(request.form)
