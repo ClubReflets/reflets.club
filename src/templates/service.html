@@ -15,6 +15,7 @@
           <p>Décrivez brièvement votre événement dans ce formulaire.</p>
         </div>
         <form action="/service" method="POST">
+          {{ form.csrf_token }}
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label">De</label>

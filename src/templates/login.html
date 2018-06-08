@@ -1,12 +1,13 @@
 {% extends "layouts/_base.html" %} {% block body %}
 <main class="auth">
-  <main class="hero is-dark is-fullheight">
+  <section class="hero is-dark is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
         <a href="/">
           <img src="{{ url_for('static', filename='images/logo/reflets_white_text.png') }}" class="logo" alt="Reflets Logo">
         </a>
         <form action="/login" method="POST" class="column is-4 is-offset-4">
+          {{ form.csrf_token }}
           <h2 class="subtitle">Connexion</h2>
           <hr>
           <div class="field">
@@ -36,5 +37,6 @@
           </div>
         </form>
       </div>
+    </section>
   </main>
-  {% endblock %}
+{% endblock %}
