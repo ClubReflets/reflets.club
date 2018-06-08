@@ -3,10 +3,33 @@
 
 {% block content %}
 <div class="container">
-  <form method="POST" action="/">
-    {{ form.csrf_token }}
-    {{ form.name.label }} {{ form.name(size=20) }}
-    <input type="submit" value="Go">
-  </form>
+  <section class="section columns">
+    <div class="column">
+      <h1 class="title">Contact</h1>
+      <p>Pour toute information ou commentaire, vous pouvez nous contacter directement via cette page.</p>
+      <p class="spacy"><span class="tag is-warning">Note:</span> si vous cherchez un photographe disponible pour couvrir un événement, merci de remplir ce <a href="/service">formulaire</a>.</p>
+    </div>
+    <div class="column">
+      <form method="POST" action="/contact">
+        {{ form.csrf_token }}
+        <div class="field">
+          {{ form.name(size=20, class="input", placeholder="Nom") }}
+        </div>
+        <div class="field">
+          {{ form.email(class="input", placeholder="Email") }}
+        </div>
+        <div class="field">
+          {{ form.message(class="textarea", placeholder="Message") }}
+        </div>
+        <input type="submit" value="Envoyer" class="button is-link is-outlined">
+      </form>
+    </div>
+  </section>
 </div>
+<iframe
+height=300
+frameborder="0" style="border:0; width:100%;"
+src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAPyjhL7NjF-Ql0weFzvhJZLxBMgA1uIV4
+  &q=École+Technologie+Supérieure" allowfullscreen>
+</iframe>
 {% endblock %}

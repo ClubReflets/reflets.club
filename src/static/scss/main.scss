@@ -16,3 +16,13 @@ body {
 .has-space-top {
   margin-top: 10px;
 }
+
+.spacy {
+  margin: 5px 0;
+}
+
+// Bulma override
+hr {
+  background-color: #dadada;
+  height: 1px;
+}
