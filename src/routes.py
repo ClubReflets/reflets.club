@@ -1,6 +1,7 @@
-from server import app
+from . import app, db
 from flask import render_template, request, jsonify
-from forms import ContactForm, AskPhotographForm, LoginForm
+from .forms import ContactForm, AskPhotographForm, LoginForm
+
 
 # ----------------------------------
 # Home page (without authentication)
@@ -9,9 +10,11 @@ from forms import ContactForm, AskPhotographForm, LoginForm
 def index():
   return render_template('index.html')
 
+
 @app.route('/photos')
 def photos():
   return render_template('photos.html')
+
 
 @app.route('/service', methods=['GET', 'POST'])
 def service():
@@ -21,6 +24,7 @@ def service():
   # POST
   return jsonify(request.form)
 
+
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
   if request.method == 'GET':
@@ -28,6 +32,7 @@ def contact():
     return render_template('contact.html', form=form)
   # POST
   return jsonify(request.form)
+
 
 # ----------------------------------
 # Authentication
@@ -39,6 +44,7 @@ def login():
     return render_template('login.html', form=form)
   # POST
   pass
+
 
 # ----------------------------------
 # Administration (with authentication)
