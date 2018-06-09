@@ -1,5 +1,7 @@
-from . import app, db
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, redirect, url_for
+from flask_login import login_required, login_user, logout_user, current_user
+from . import app
+from .models import User
 from .forms import ContactForm, AskPhotographForm, LoginForm
 
 
@@ -39,13 +41,32 @@ def contact():
 # ----------------------------------
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-  if request.method == 'GET':
-    form = LoginForm()
-    return render_template('login.html', form=form)
-  # POST
-  pass
+  form = LoginForm()
+  error = None
+
+  if request.method == 'POST' and form.validate():
+    user_email = request.form.get('email')
+    user = User.query.filter_by(email=user_email.lower()).first()
+    # TODO: Continue (handle password)
+    if user:
+      if login_user(user):
+        return 'Good to login'
+    error = 'Email ou mot de passe invalide.'
+
+  return render_template('login.html', form=form, error=error)
+
+
+@app.route('/logout', methods=['DELETE'])
+@login_required
+def logout():
+  logout_user()
+  return redirect(url_for('index'))
 
 
 # ----------------------------------
 # Administration (with authentication)
 # ----------------------------------
+@app.route('/admin', methods=['GET'])
+@login_required
+def admin():
+  return 'Admin page'
