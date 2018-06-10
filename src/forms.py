@@ -22,3 +22,4 @@ class AskPhotographForm(FlaskForm):
 class LoginForm(FlaskForm):
   email = EmailField(validators=[DataRequired(), Email()])
   password = PasswordField(validators=[DataRequired()])
+

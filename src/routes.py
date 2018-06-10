@@ -1,5 +1,7 @@
+# Import Flask modules & others
 from flask import render_template, request, jsonify, redirect, url_for
 from flask_login import login_required, login_user, logout_user, current_user
+# Import custom modules
 from . import app
 from .models import User
 from .forms import ContactForm, AskPhotographForm, LoginForm
@@ -44,19 +46,24 @@ def login():
   form = LoginForm()
   error = None
 
-  if request.method == 'POST' and form.validate():
-    user_email = request.form.get('email')
-    user = User.query.filter_by(email=user_email.lower()).first()
-    # TODO: Continue (handle password)
-    if user:
-      if login_user(user):
-        return 'Good to login'
+  if request.method == 'POST' and form.validate_on_submit():
+    email = request.form.get('email')
+    password = request.form.get('password')
+    user = User.query.filter_by(email=email.lower()).first()
+
+    if user and user.check_password(password):
+      login_user(user)
+      # TODO: Validate the next action (url)
+      #  https://flask-login.readthedocs.io/en/latest/#login-example
+      #  http://flask.pocoo.org/snippets/63/
+      return redirect(url_for('admin'))
+
     error = 'Email ou mot de passe invalide.'
 
   return render_template('login.html', form=form, error=error)
 
 
-@app.route('/logout', methods=['DELETE'])
+@app.route('/logout', methods=['POST'])
 @login_required
 def logout():
   logout_user()
@@ -69,4 +76,4 @@ def logout():
 @app.route('/admin', methods=['GET'])
 @login_required
 def admin():
-  return 'Admin page'
+  return render_template('admin/index.html', user=current_user)

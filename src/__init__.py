@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_assets import Environment
 from flask_login import LoginManager
 from webassets.loaders import PythonLoader as PythonAssetsLoader
+
 # Import custom modules
 from . import assets
 
@@ -26,14 +27,14 @@ for name, bundle in loader.load_bundles().items():
 # Load the routes
 from . import routes
 
-# Configure Authentication
+# Configure Flask-Security for authentication
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 
 @login_manager.user_loader
 def load_user(user_id):
-  return User.get(user_id)
+  return User.query.get(user_id)
 
 
 @login_manager.unauthorized_handler

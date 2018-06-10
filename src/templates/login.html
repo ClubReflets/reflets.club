@@ -1,5 +1,9 @@
-{% extends "layouts/_base.html" %} {% block body %}
+{% extends "layouts/_base.html" %}
+{% block body %}
 <main class="auth">
+  {% if error %}
+    <p class="has-text-danger">{{ error }}</p>
+  {% endif %}
   <section class="hero is-dark is-fullheight">
     <div class="hero-body">
       <div class="container has-text-centered">
@@ -37,6 +41,7 @@
           </div>
         </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 {% endblock %}
